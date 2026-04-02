@@ -1,3 +1,5 @@
+const Record = require('../models/Record.js');
+
 exports.getSummary = async (req, res) => {
   try {
     const records = await Record.find();
@@ -18,7 +20,7 @@ exports.getSummary = async (req, res) => {
       categoryTotals[r.category] += r.amount;
     });
 
-    
+
     const recent = records.slice(-5);
 
     res.json({
