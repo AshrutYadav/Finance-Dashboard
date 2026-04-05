@@ -8,13 +8,13 @@ const {
   toggleUserStatus
 } = require('../controllers/userController');
 
-router.post('/', createUser);
+router.post('/', authorize('admin'), createUser);
 
 router.get('/', getUsers);
 
-router.patch('/:id', updateUser);
+router.patch('/:id', authorize('admin'), updateUser);
 
-router.patch('/:id/status', toggleUserStatus);
+router.patch('/:id/status', authorize('admin'), toggleUserStatus);
 
 
 
